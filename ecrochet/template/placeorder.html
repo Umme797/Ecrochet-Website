@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+
+
+<br><br><br><br>
+<div class="header">
+    <h3 class="text-center" style="top: auto; text-align: center;">Place Your Order</h3>
+</div>
+
+
+
+<div class="container mt-5">
+    
+    <form method="post">
+
+        {% csrf_token %}  
+    
+        <div class="mb-3">
+            <label for="address" class="form-label">
+                Shipping Address
+            </label>
+            <input 
+            type="text" 
+            class="form-control" 
+            name="shipadd" 
+            placeholder="Enter your shipping address" 
+            style="
+                width: 1000px;
+                max-width: 1200px;">
+        </div>
+    
+    
+        <div class="mb-3">
+            <label for="payment" class="form-label">
+                Payment Method
+            </label>
+            <select class="form-select" name="payment">
+                <option value="">Select Payment Method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Razor Pay">Razor Pay</option>
+                <option value="PayPal">PayPal</option>
+                <option value="UPI">UPI</option>
+                <option value="GPay">GPay</option>
+            </select>
+        </div>
+    
+    
+        <button type="submit">Confirm Order</button>
+
+
+        {% if errmsg %}
+        <div class="alert alert-danger mt-3">
+            {{ errmsg }}
+        </div>
+        {% endif %}
+
+    
+    
+    </form>
+
+
+</div>
+
+<br><br>
+
+{% endblock 'main' %}

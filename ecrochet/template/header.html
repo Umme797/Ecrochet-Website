@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MunLightBlues</title>
+
+    <!--Icons API-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/header.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="container">
+
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a class="nav-link active" aria-current="page" href="/index">
+                    <img src="{% static 'Images/BM2.png' %}" alt="Logo" width="40" height="40">
+                </a>
+                {% if user.is_authenticated %}
+                    <div class="welcome-user">
+                        Welcome, {{ user.username }}
+                    </div>
+                {% endif %}
+            </div>
+
+
+
+            <!-- Search bar -->
+            <form action="{% url 'search' %}" method="get" class="nav-search d-flex">
+                <input type="text" name="q" placeholder="Search for products..." class="search-input form-control me-0"
+                    value="{{ query|default_if_none:'' }}">
+                <button type="submit" class="btn btn-light search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+
+
+            <!-- Navigation links -->
+            <div class="navbar-nav">
+                <a class="nav-link" href="/patterns">Patterns</a>
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="/ulogout">Logout</a>
+
+                <p>
+                    Login date : {{ user.last_login }}
+                </p>
+
+                {% else %}
+                <a class="nav-link" href="/ulogin">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                {% endif %}
+            </div>
+
+
+            <!-- Cart -->
+            {% if user.is_authenticated %}
+                <div class="nav-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="/viewcart" class="nav-link">Cart</a>
+                </div>
+            {% endif %}
+
+
+        </div>
+
+    </nav>
+
+
+    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
+
+
+</body>
+
+</html>

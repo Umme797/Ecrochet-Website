@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+
+
+<br><br><br><br>
+<div class="header">
+    <h3 class="text-center" style="top: auto; text-align: center;">Product Details</h3>
+</div>
+<br><br>
+<div class="container">
+    {% for x in products %}
+        <div class="row">
+
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img src="{{ x.pimage.url }}" class="product-image" alt="Product Image" width="400px" height="400px">
+            </div>
+
+            <div class="col-md-6 product-details">
+                <div 
+                class="des" 
+                style="display: flex; 
+                flex-wrap: wrap; 
+                flex-direction: column; 
+                justify-content: center;
+                gap: 10px;
+                ">
+                    <h4>
+                        {{ x.name }}
+                    </h4>
+                    <h5>
+                        Price: Rs.{{ x.price }}
+                    </h5>
+                    <p>
+                        Product Description: {{ x.pdetails }}
+                    </p>
+                </div>
+
+                <div class="buttons" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    {% if user.is_authenticated %}
+                        <button>
+                            <a href="/addtocart/{{ x.id }}" style="text-align: center;">Add to cart</a>
+                        </button>
+                        <button>
+                            <a href="/viewcart" style="text-align: center;">View Cart</a>
+                        </button>
+                    {% else %}
+                        <div class="alert" style="border: 1px solid #284d69;">
+                            Please 
+                            <a href="/ulogin">
+                                <b>Log In</b>
+                            </a> 
+                            to add items to your cart or view your cart.
+                        </div>
+                    {% endif %}
+                    <button>
+                        <a href="/index" style="text-align: center;">Shop More</a>
+                    </button>
+                </div>
+
+                {% if success %}
+                    <div class="alert alert-success mt-3">
+                        {{ success }}
+                    </div>
+                {% endif %}
+
+                {% if errmsg %}
+                <div class="alert alert-danger mt-3">
+                    {{ errmsg }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <br><br>
+</div>
+
+<br><br>
+
+
+
+{% endblock 'main' %}

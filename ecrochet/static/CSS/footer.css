@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0; 
+  font-family: "Tangerine", serif;
+  box-sizing: border-box; 
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  color: #666;
+}
+
+
+/* SOCIAL MEDIA ICONS */
+footer .bi {
+  color: #284d69; 
+}
+
+footer .bi:hover {
+  color: #1b3b54; 
+}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+
+
+<br><br><br><br>
+<div class="header">
+    <h3 class="text-center" style="top: auto; text-align: center;">Your Cart</h3>
+</div>
+
+
+<div class="container mt-5">
+
+    {% if maxqty %}
+    <div class="alert alert-warning">
+        <p>{{ maxqty }}</p>
+    </div>
+    {% endif %}
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for x in data %}
+            <tr>
+
+                <td>
+                    <img src="{{ x.pid.pimage.url }}" alt="Item Image" width="300" height="300">
+                    <br>
+                    {{ x.pid.name }}
+                    <br>
+                    <button style="width: 95px; text-align: center;">
+                        <a href="/remove/{{ x.id }}">Remove</a>
+                    </button>
+                </td>
+
+                <td>Rs. {{ x.pid.price }}</td>
+
+                <td>
+                    <button style="width: 47px;">
+                        <a href="/updateqty/0/{{ x.id }}">-</a>
+                    </button>
+                    <input type="number" value="{{ x.qty }}" min="1" max="{{ MAX_QUANTITY }}"
+                        style="width: 50px; border-radius: 30px; border: none; text-align: center;">
+                    <button style="width: 47px;">
+                        <a href="/updateqty/1/{{ x.id }}">+</a>
+                    </button>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<div class="container">
+    <p>Total: Rs. {{ total }}</p>
+
+    <button style="width: 175px;">
+        <a href="/placeorder">
+            Proceed to Checkout
+        </a>
+    </button>
+</div>
+
+{% endblock 'main' %}

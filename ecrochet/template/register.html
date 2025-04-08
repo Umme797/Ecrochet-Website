@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'CSS/register.css' %}">
+</head>
+
+<body>
+
+
+
+    <!-- LOGO -->
+    <div class="row mt-3" style="margin-left: 50px;">
+        <div class="col-12 d-flex align-items-center" style="font-size: 20px;">
+            <a href="/index" style="text-decoration: none; display: flex; align-items: center;">
+                <img src="{% static 'Images/BM2.png' %}" alt="Logo" width="40" height="40" style="margin-right: 10px;">
+                <span class="welcome-user" style="color: #284d69;">
+                    Mun Light Blues
+                </span>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="container mt-3">
+
+        <div class="row signup-container mt-4">
+
+            <!-- CAROUSEL -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+
+                <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                    data-bs-interval="2000">
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="{% static 'Images/Strawberry pouch.png' %}" alt="Strawberry pouch"
+                                class="d-block w-100" style="width: 475px; height: 475px;">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="{% static 'Images/Black Pouch.png' %}" alt="Black Pouch" class="d-block w-100"
+                                style="width: 475px; height: 475px;">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="{% static 'Images/Lavendar Pouch.png' %}" alt="Lavendar Pouch"
+                                class="d-block w-100" style="width: 475px; height: 475px;">
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- FORM -->
+            <div class="col-md-6 form-container">
+
+                <h3>Register</h3>
+
+                {% if errmsg %}
+                <div class="alert alert-danger">
+                    {{ errmsg }}
+                </div>
+                {% endif %}
+
+                {% if succmsg %}
+                <div class="alert alert-success">
+                    {{ succmsg }}
+                </div>
+                {% endif %}
+
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="input-field">
+                        <label for="uname">
+                            Username:
+                        </label>
+                        <input type="text" name="uname" id="input1" class="form-control">
+                    </div>
+
+                    <div class="input-field">
+                        <label for="email">
+                            Email ID:
+                        </label>
+                        <input type="email" name="email" id="input2" class="form-control">
+                    </div>
+
+                    <div class="input-field">
+                        <label for="upass">
+                            Password:
+                        </label>
+                        <input type="password" name="upass" id="input3" class="form-control">
+                    </div>
+
+                    <div class="terms">
+                        <input type="checkbox" name="Terms" id="T&C">
+                        <label for="T&C">
+                            I agree to all statements in
+                            <a href="#">
+                                Terms & Conditions
+                            </a>
+                        </label>
+                    </div>
+
+                    <div class="submit mt-3">
+                        <input type="submit" value="Register">
+                    </div>
+
+                    <br>
+
+                    <p>
+                        Already have an account?
+                        <a href="/ulogin">
+                            Log In
+                        </a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
+
+
+</body>
+
+</html>

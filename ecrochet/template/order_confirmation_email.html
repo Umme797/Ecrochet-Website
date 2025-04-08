@@ -1,0 +1,100 @@
+<!-- {% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+
+<div class="header">
+    <h1>Order Confirmation</h1>
+</div>
+
+
+<div class="content">
+
+    <p>Hi {{ user.username }},</p>
+
+    <p>Thank you for your order! Here are the details:</p>
+
+    <ul>
+        {% for item in order_items %}
+        <li>{{ item.product_name }} - Quantity: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Total Amount: <strong>${{ total }}</strong></p>
+
+</div>
+
+
+<div class="footer">
+
+    <p>If you have any questions, feel free to contact us at support@example.com.</p>
+    <p>Thank you for shopping with us!</p>
+
+</div>
+
+
+{% endblock 'main' %} -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+        }
+        .order-details {
+            margin-top: 20px;
+        }
+        .order-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .order-details th, .order-details td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Confirmation</h1>
+    <p>Hi {{ user.username }},</p>
+    <p>Thank you for your order!</p>
+    
+    <div class="order-details">
+        <h2>Order Details:</h2>
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+            {% for item in order_items %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p class="total">Total Amount: ${{ total }}</p>
+    </div>
+    
+    <p>Thank you for shopping with us!</p>
+</body>
+</html>

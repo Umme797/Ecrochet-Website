@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Tangerine", serif;
+  box-sizing: border-box;
+}
+
+
+
+/*NAVBAR*/
+.navbar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+
+/*LOGO*/
+.nav-logo img {
+  height: 40px;
+  width: 40px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.nav-logo .welcome-user {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+
+/*SEARCH*/
+.nav-search {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  max-width: 500px;
+  margin-right: 20px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+  margin: 0; 
+  box-sizing: border-box; 
+}
+
+.search-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  border-radius: 0 4px 4px 0;
+  color: #0f1111;
+  padding: 0;
+  margin: 0; 
+  box-sizing: border-box;
+}
+
+
+
+/* NAVIGATION LINKS */
+.navbar-nav .nav-link {
+  text-decoration: none;
+  color: #003443;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/*CART*/
+.nav-cart {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.nav-cart i {
+  font-size: 20px;
+  color: #003443;
+  margin-right: 8px;
+}
+
+
+
+/*ALL LINKS*/
+a {
+  text-decoration: none;
+  color: #003443;
+}
+
+
+
+/*RESPONSIVENESS*/
+@media (max-width: 770px) {
+  .nav-search {
+      max-width: 300px; 
+  }
+}
+
+
+@media (max-width: 600px) {
+  .navbar .container {
+      flex-wrap: wrap;
+  }
+  
+  .nav-logo, .nav-search, .nav-cart, .navbar-nav {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .nav-search {
+      margin-bottom: 10px;
+  }
+
+  .navbar-nav {
+      display: flex;
+      justify-content: center;
+      flex-basis: 100%;
+  }
+
+  .nav-logo {
+    flex-direction: column; 
+    align-items: center;
+}
+
+}
+
+
+
+/* BUTTON STYLES */
+button {
+  background-color: #284d69; 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  border-radius: 30px; 
+}
+
+button a{
+  color: white;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #1b3b54; 
+}

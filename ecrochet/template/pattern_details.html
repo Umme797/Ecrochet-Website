@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<div class="header my-4">
+    <h3 class="text-center">Pattern Details</h3>
+</div>
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="{{ pattern.pimage.url }}" class="product-image" alt="Image of {{ pattern.name }}" width="400" height="400">
+        </div>
+
+        <div class="col-md-6 product-details">
+            <div class="des">
+                <h4>{{ pattern.name }}</h4>
+                <h5>Difficulty: {{ pattern.difficulty }}</h5>
+                <p>Product Description: {{ pattern.description }}</p>
+                <p><strong>Details:</strong> {{ pattern.patterndetails }}</p>
+            </div>
+            <div class="buttons">
+                <button>
+                    <a href="{% url 'patterns' %}">Back to Patterns</a>
+                </button>
+            </div>
+
+            {% if success %}
+                <div class="alert alert-success mt-3">
+                    {{ success }}
+                </div>
+            {% endif %}
+
+            {% if errmsg %}
+                <div class="alert alert-danger mt-3">
+                    {{ errmsg }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

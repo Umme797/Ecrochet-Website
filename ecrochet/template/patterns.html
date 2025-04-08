@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'main' %}
+
+
+<br><br><br><br>
+
+<div class="container">
+
+    <!--CARDS-->
+    <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
+
+        <!--TILE-->
+        {% for x in patterns %}
+
+        <div class="col mt-3">
+
+            <div class="card">
+
+                {% if x.pimage %}
+                <img src="{{ x.pimage.url }}" class="card-img-top" alt="{{ x.name }}" height="350px">
+                {% endif %}
+
+                <div class="card-body">
+                    <h6 class="card-title"> {{ x.name }} </h6>
+                    <h6 class="card-text">
+                        Level : {{ x.difficulty }}
+                    </h6>
+                    <button>
+                        <a href="{% url 'pattern_details' pid=x.id %}">See Pattern</a>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+
+</div>
+
+
+{% endblock 'main' %}
